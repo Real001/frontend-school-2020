@@ -114,6 +114,8 @@
 // console.log(car1);
 // console.log(cloneCar1);
 
+// Object.assign, JSON
+
 // const metrics = {
 //     height: 120,
 //     weight: 140
@@ -184,24 +186,24 @@
 
 // someFunction(1, 2, 3, 4, 5, 6);
 
-function clonePart(obj, ...keys) {
-    const clone = {};
-
-    for (let key in obj) {
-        if (keys.includes(key)) {
-            clone[key] = obj[key];
-        }
-    }
-
-    return clone;
-}
-
-let comment = {
-    type: 'success',
-    message: 'text-text',
-    authorId: 'qwerty'
-};
-let cl = clonePart(comment, 'message', 'authorId'); 
+// function clonePart(obj, ...keys) {
+//     const clone = {};
+//
+//     for (let key in obj) {
+//         if (keys.includes(key)) {
+//             clone[key] = obj[key];
+//         }
+//     }
+//
+//     return clone;
+// }
+//
+// let comment = {
+//     type: 'success',
+//     message: 'text-text',
+//     authorId: 'qwerty'
+// };
+// let cl = clonePart(comment, 'message', 'authorId');
 
 /**
  * написать функцию filter которая принимает в качестве аргумента любой объект
@@ -223,30 +225,40 @@ let cl = clonePart(comment, 'message', 'authorId');
  * clonePart({ type: 'success', message: 'text-text', authorId: 'qwerty' }, 'message', 'authorId'); // вернет новый объект => { message: 'text-text', authorId: 'qwerty' }
  */
 
-// методы объекта, cокращённая запись метода *
+// иммутабельность
 
-// let age = 44;
-
-// let user = {
-//     name: 'Bob',
-//     age,
-//     sayHello: function() {
-//         console.log('Hello!');
-//     },
-//     sayHi() {
-//         console.log('Hi ' + this.name);
-//     }
+// const imObj1 = {
+//     a: 3
 // };
+//
+// let imObj2 = {
+//     a: 3
+// };
+//
+// // imObj1 = "3";
+// imObj2 = "3"
+//
+// imObj1.a = 5
+// imObj1.b = 3
+//
+// console.log(Object.getOwnPropertyDescriptor(imObj1, "a"))
+//
+// Object.defineProperty(imObj1, "a",  {
+//     value: 23,
+//     writable: false,
+//     configurable: true,
+//     enumerable: true,
+// })
+//
+// console.log(Object.getOwnPropertyDescriptor(imObj1, "a"))
+//
+// imObj1.obj = imObj2;
+//
+// Object.freeze(imObj1)
+// imObj1.a = 435;
+// imObj1.obj = {};
 
-// let foo = user.sayHi;
-
-// foo();
-
-// Ключевое слово «this» в методах *
-
-// потеря this - ссылочный тип
-
-
+// getter and setter
 
 // преобразование объектов в примитивы string, number, default *
 
@@ -279,6 +291,31 @@ let cl = clonePart(comment, 'message', 'authorId');
 // console.log('!!!'+ simeObj2);
 // console.log(simeObj2.toString());
 
+
+// методы объекта, cокращённая запись метода *
+
+// let age = 44;
+//
+// let user = {
+//     name: 'Bob',
+//     age,
+//     sayHello: function() {
+//         console.log('Hello!');
+//     },
+//     sayHi() {
+//         console.log('Hi ' + this.name);
+//     }
+// };
+//
+// let foo = user.sayHi;
+//
+// foo();
+
+// Ключевое слово «this» в методах *
+
+// потеря this - ссылочный тип
+
+
 // Конструкторы, создание объектов через "new" *
 
 // let o = {
@@ -287,26 +324,26 @@ let cl = clonePart(comment, 'message', 'authorId');
 
 // function Car() {
 //     // let obj = {}; => this
-
+//
 //     // if (!new.target) {
 //     //     return new Car();
 //     // }
-
+//
 //     this.model = 'honda';
 //     this.speed = 180;
 //     this.state = 'stopped';
-
+//
 //     this.run = function () {
 //         this.state = 'running';
 //     }
-
+//
 //     this.stop = function() {
 //         this.state = 'stopped';
 //     }
-
+//
 //     // return obj; this
 // }
-
+//
 // let car = new Car();
 // let car2 = new Car();
 // let car3 = new Car();
@@ -318,15 +355,15 @@ let cl = clonePart(comment, 'message', 'authorId');
 //     state: 'stopped',
 //     model: 'ГАЗ'
 // };
-
+//
 // car.ran = function() {
 //     this.state = 'running';
 // }
-
+//
 // car.stop = function() {
 //     this.state = 'stopped';
 // }
-
+//
 // console.log(car);
 // car.ran();
 // console.log(car);
